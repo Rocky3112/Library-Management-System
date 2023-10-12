@@ -40,7 +40,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
                         const saveUser = { name: data.name, email: data.email }
-                        fetch('https://sports-camp-server-lemon.vercel.app/users', {
+                        fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'
@@ -72,7 +72,7 @@ const SignUp = () => {
   return (
     <>
       <Helmet>
-        <title>Sports Camp | Sign Up</title>
+        <title>LMS | Sign Up</title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
