@@ -66,7 +66,7 @@ const SignUp = () => {
       <Helmet>
         <title>LMS | Sign Up</title>
       </Helmet>
-      <div className="hero min-h-screen bg-base-100 ">
+      <div className="hero min-h-screen bg-base-200 ">
          
           <div className=" md:w-1/2card flex-shrink-0 w-full max-w-sm shadow-2xl bg-white mt-20 rounded-xl">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">

@@ -66,7 +66,7 @@ const Navbar = () => {
           Library Management System
           </a>
         </div>
-        <div className="navbar-center hidden lg:flex ">
+        <div className="navbar-end hidden lg:flex ">
           <ul className="menu menu-horizontal px-1 text-base">
           <li>
                 <Link to="/">Home</Link>
@@ -94,9 +94,7 @@ const Navbar = () => {
             
           </ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn btn-outline border-white text-white hover:bg-white hover:text-black">Button</a>
-        </div>
+     
       </div>
     </div>
   );
