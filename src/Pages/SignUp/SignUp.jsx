@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Providers/AuthProvider";
-import signup from '../../assets/signup.gif'
+// import signup from '../../assets/signup.gif'
 import SocialLogin from "../SocialLogin/SocialLogin";
 
 
@@ -14,7 +14,7 @@ const SignUp = () => {
     handleSubmit,
     reset,
     formState: { errors },
-    watch,
+    // watch,
   } = useForm();
   const { createUser,updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -22,14 +22,6 @@ const SignUp = () => {
   const onSubmit = (data) => {
     console.log(data);
 
-    if (data.password !== data.confirmPassword) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Password and Confirm Password do not match.",
-      });
-      return;
-    }
 
     createUser(data.email, data.password)
             .then(result => {
@@ -39,7 +31,7 @@ const SignUp = () => {
 
                 updateUserProfile(data.name, data.photoURL)
                     .then(() => {
-                        const saveUser = { name: data.name, email: data.email }
+                        const saveUser = { name: data.name, email: data.email, photo: data.photoURL, id: data.id }
                         fetch('http://localhost:5000/users', {
                             method: 'POST',
                             headers: {
@@ -74,12 +66,8 @@ const SignUp = () => {
       <Helmet>
         <title>LMS | Sign Up</title>
       </Helmet>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center md:w-1/2 lg:text-left">
-            <h1 className="text-5xl font-bold">Sign up now!</h1>
-            <img src={signup} alt="" />
-          </div>
+      <div className="hero min-h-screen bg-base-200 ">
+         
           <div className=" md:w-1/2card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control">
@@ -95,6 +83,21 @@ const SignUp = () => {
                 />
                 {errors.name && (
                   <span className="text-red-600">Name is required</span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">id</span>
+                </label>
+                <input
+                  type="text"
+                  {...register("id", { required: true })}
+                  id="id"
+                  placeholder="id"
+                  className="input input-bordered"
+                />
+                {errors.id && (
+                  <span className="text-red-600">id is required</span>
                 )}
               </div>
               <div className="form-control">
@@ -164,27 +167,8 @@ const SignUp = () => {
                   </a>
                 </label>
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Confirm Password</span>
-                </label>
-                <input
-                  type="password"
-                  {...register("confirmPassword", {
-                    required: true,
-                    validate: (value) => value === watch("password"),
-                  })}
-                  placeholder="confirm password"
-                  className="input input-bordered"
-                />
-                {errors.confirmPassword?.type === "required" && (
-                  <p className="text-red-600">Confirm Password is required</p>
-                )}
-                {errors.confirmPassword?.type === "validate" && (
-                  <p className="text-red-600">Passwords do not match</p>
-                )}
-              </div>
-              <div className="form-control mt-6">
+
+              <div className="form-control mt-2">
                 <input
                   className="btn btn-primary"
                   type="submit"
@@ -199,7 +183,7 @@ const SignUp = () => {
             </p>
             <SocialLogin></SocialLogin>
           </div>
-        </div>
+       
       </div>
     </>
   );
