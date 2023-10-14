@@ -1,45 +1,39 @@
 /* eslint-disable react/prop-types */
-import  { useState } from "react";
-import Modal from "./Modal";
 import './style.css';
 
 const Card = ({ book }) => {
-    const [selectedBook, setSelectedBook] = useState(null);
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const openModal = (book) => {
-        setSelectedBook(book);
-        setIsModalOpen(true);
-    };
-
-    const closeModal = () => {
-        setSelectedBook(null);
-        setIsModalOpen(false);
-    };
+    console.log(book);
 
     return (
-        <div>
-            <h1>Book Search</h1>
+        <div className=''>
+          
 
-            <ul>
-                {book.map((book) => (
-                    <li key={book.id} onClick={() => openModal(book)}>
-                        <h2>{book.volumeInfo.title}</h2>
-                        <p>Author: {book.volumeInfo.authors && book.volumeInfo.authors.join(', ')}</p>
-                        <p>Published: {book.volumeInfo.publishedDate}</p>
-                        <p>Description: {book.volumeInfo.description}</p>
-                    </li>
-                ))}
-            </ul>
+            <div className="card glass">
+                <div className="card-body h-80 bg-red-00">
+                    <h2 className=' text-2xl font-semibold'>{book.volumeInfo.title}</h2>
+                    <p className=' text-lg font-semibold'>Author: {book.volumeInfo.authors && book.volumeInfo.authors.join(', ')}</p>
+                    <p>Published: {book.volumeInfo.publishedDate}</p>
 
-            {isModalOpen && (
-                <Modal onClose={closeModal}>
-                    <h2>{selectedBook.volumeInfo.title}</h2>
-                    <p>Author: {selectedBook.volumeInfo.authors && selectedBook.volumeInfo.authors.join(', ')}</p>
-                    <p>Published: {selectedBook.volumeInfo.publishedDate}</p>
-                    <p>Description: {selectedBook.volumeInfo.description}</p>
-                </Modal>
-            )}
+                    <div className="card-actions justify-end">
+                        <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>Read More</button>
+                    </div>
+                </div>
+            </div>
+            <dialog id="my_modal_4" className="modal">
+                <div className="modal-box  max-w-4xl">
+                    <h2>{book.volumeInfo.title}</h2>
+                    <p>Author: {book.volumeInfo.authors && book.volumeInfo.authors.join(', ')}</p>
+                    <p>Published: {book.volumeInfo.publishedDate}</p>
+                    <p>description: {book.volumeInfo.description}</p>
+                    
+                    <div className="modal-action">
+                        <form method="dialog">
+
+                            <button className="btn">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
         </div>
     );
 };
