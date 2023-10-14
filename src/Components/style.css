@@ -22,6 +22,7 @@ html{
     display: flex;
     align-items: center;
     position: relative;
+
    
 }
 .header::before{
@@ -43,7 +44,7 @@ html{
 }
 .row2 h2{
     font-size: 2rem;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-bottom: 15px;
     margin-left: 20px;
 }
@@ -58,12 +59,12 @@ html{
 .search input{
     outline: 0;
     border: 2px solid rgba(241, 153, 71, 0.926);
-    width: 270px;
+    width: 240px;
     height: 35px;
     padding: 0 0.5rem;
     font-size: 15px;
     border-radius: 5px;
-    margin-left: 45px;
+    margin-left: 75px;
 }
 
 .card{

@@ -33,7 +33,7 @@ const Navbar = () => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 text-black rounded-box w-52"
             >
              <li>
                 <Link to="/">Home</Link>
@@ -62,7 +62,7 @@ const Navbar = () => {
             
             </ul>
           </div>
-          <a className="btn btn-ghost lg:text-3xl">
+          <a className="btn btn-ghost lg:text-3xl text-lg">
           Library Management System
           </a>
         </div>

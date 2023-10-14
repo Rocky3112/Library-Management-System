@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="header">
+      <div className="header sm:p-5">
         <div className="row1">
           <h1>A room without books is like<br /> a body without a soul.</h1>
         </div>
