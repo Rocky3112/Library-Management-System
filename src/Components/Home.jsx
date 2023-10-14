@@ -32,13 +32,13 @@ const Home = () => {
         <div className="row1">
           <h1>A room without books is like<br /> a body without a soul.</h1>
         </div>
-        <div className="row2">
-          <h2>Find Your Book</h2>
+        <div className="row2 lg:mt-20">
+          <h2 className="">Find Your Book</h2>
           <div className="search">
-            <input type="text" placeholder="Enter Your Book Name"
+            <input className="border w-64" type="text" placeholder="Enter Your Book Name"
               value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
               onKeyPress={searchTerm} />
-            <button><i className="fas fa-search"></i></button>
+            {/* <button><i className=" btn fas fa-search"></i></button> */}
           </div>
           <img src="./images/bg2.png" alt="" />
         </div>

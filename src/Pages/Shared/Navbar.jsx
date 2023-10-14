@@ -12,7 +12,7 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div className="navbar fixed bg-opacity-50 z-10 font-semibold text-white bg-black w-full">
+      <div className="navbar fixed bg-opacity-50 z-20 font-semibold text-white bg-black w-full">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -62,12 +62,12 @@ const Navbar = () => {
             
             </ul>
           </div>
-          <a className="btn btn-ghost text-3xl">
+          <a className="btn btn-ghost lg:text-3xl">
           Library Management System
           </a>
         </div>
         <div className="navbar-end hidden lg:flex ">
-          <ul className="menu menu-horizontal px-1 text-base">
+          <ul className="menu menu-horizontal px-12 text-lg">
           <li>
                 <Link to="/">Home</Link>
               </li>
