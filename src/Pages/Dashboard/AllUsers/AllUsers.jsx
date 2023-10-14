@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
 
 import { useQuery } from "react-query";
-import useAxios from "../../../Hooks/useAxios";
 import Swal from "sweetalert2";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import { Helmet } from "react-helmet";
+import useAxios from "../../../Hooks/useAxios";
 
 
 

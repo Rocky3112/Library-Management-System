@@ -28,13 +28,13 @@ const Home = () => {
 
   return (
     <>
-      <div className="header sm:p-5">
+      <div className="head sm:p-5">
         <div className="row1">
           <h1>A room without books is like<br /> a body without a soul.</h1>
         </div>
         <div className="row2 lg:mt-20">
           <h2 className="">Find Your Book</h2>
-          <div className="search">
+          <div className="Search">
             <input className="border w-64" type="text" placeholder="Enter Your Book Name"
               value={searchTerm} onChange={e => setSearchTerm(e.target.value)}
               onKeyPress={searchTerm} />

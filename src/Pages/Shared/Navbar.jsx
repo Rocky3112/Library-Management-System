@@ -1,13 +1,15 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { Link } from "react-router-dom";
+import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
+  const [isAdmin] = useAdmin();
   const handleLogOut = () => {
     logOut()
-      .then(() => {})
+      .then(() => { })
       .catch((error) => console.log(error));
   };
   return (
@@ -35,16 +37,18 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-300 text-black rounded-box w-52"
             >
-             <li>
+              <li>
                 <Link to="/">Home</Link>
               </li>
-              <li>
-                <Link to="/instractors">Instractors</Link>
-              </li>
-              <li>
-                <Link to="/allClasses">All Classes</Link>
-              </li>
-              
+              {
+                isAdmin ? <li>
+                  <Link to='/dashboard/adminhome'>Dashboard</Link>
+                </li> :
+                  <li>
+                    <Link to='/dashboard/userhome' >Dashboard</Link>
+                  </li>
+              }
+
               {user ? (
                 <>
                   <img className=" h-10 rounded-full mx-2" src={user?.photoURL} alt="" />
@@ -59,42 +63,44 @@ const Navbar = () => {
                   </li>
                 </>
               )}
-            
+
             </ul>
           </div>
           <a className="btn btn-ghost lg:text-3xl text-lg">
-          Library Management System
+            Library Management System
           </a>
         </div>
         <div className="navbar-end hidden lg:flex ">
           <ul className="menu menu-horizontal px-12 text-lg">
-          <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/instractors">Instractors</Link>
-              </li>
-              <li>
-                <Link to="/allClasses">All Classes</Link>
-              </li>
-              {user ? (
-                <>
-                  <img className=" h-10 rounded-full mx-2" src={user?.photoURL} alt="" />
-                  <button onClick={handleLogOut} className="btn btn-ghost">
-                    Log-Out
-                  </button>
-                </>
-              ) : (
-                <>
-                  <li>
-                    <Link to="login">Login</Link>
-                  </li>
-                </>
-              )}
-            
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            {
+              isAdmin ? <li>
+                <Link to='/dashboard/adminhome'>Dashboard</Link>
+              </li> :
+                <li>
+                  <Link to='/dashboard/userhome' >Dashboard</Link>
+                </li>
+            }
+            {user ? (
+              <>
+                <img className=" h-10 rounded-full mx-2" src={user?.photoURL} alt="" />
+                <button onClick={handleLogOut} className="btn btn-ghost">
+                  Log-Out
+                </button>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link to="login">Login</Link>
+                </li>
+              </>
+            )}
+
           </ul>
         </div>
-     
+
       </div>
     </div>
   );

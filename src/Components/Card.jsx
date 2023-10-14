@@ -2,13 +2,13 @@
 import './style.css';
 
 const Card = ({ book }) => {
-    console.log(book);
+    // console.log(book);
 
     return (
         <div className=''>
           
 
-            <div className="card glass">
+            <div className="card glass card1">
                 <div className="card-body h-80 bg-red-00">
                     <h2 className=' text-2xl font-semibold'>{book.volumeInfo.title}</h2>
                     <p className=' text-lg font-semibold'>Author: {book.volumeInfo.authors && book.volumeInfo.authors.join(', ')}</p>
