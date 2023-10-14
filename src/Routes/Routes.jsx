@@ -4,6 +4,11 @@ import ErrorPage from "../Layout/ErrorPage";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import Home from "../Components/Home";
+import PrivateRoute from "./PrivateRoute";
+import Dashboard from "../Layout/Dashboard";
+import AdminRoute from "./AdminRoute";
+import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 
 export const router = createBrowserRouter([
@@ -27,5 +32,27 @@ export const router = createBrowserRouter([
   
     ],
   },
+
+
+  {
+    path: "dashboard",
+    element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children:[
+      // {
+      //   path: "userhome",
+      //   element: <UserHome></UserHome>
+      // },
+      {
+        path: "adminhome",
+        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+      },
+      {
+        path: "allusers",
+        element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
+      },
+      
+    ]
+  }
   
 ]);
