@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useContext, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +10,7 @@ const axiosSecure = axios.create({
 });
 
 const useAxios = () => {
-  const { logOut } = useContext(AuthContext);
+  const { logOut,user } = useContext(AuthContext);
   const navigate = useNavigate();
 
 
