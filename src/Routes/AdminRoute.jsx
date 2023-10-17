@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 
 import { useContext } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import useAdmin from "../Hooks/useAdmin";
-import { Navigate, useLocation } from "react-router-dom";
 
 const AdminRoute = ({ children }) => {
     const { user, loading } =useContext(AuthContext);
