@@ -10,6 +10,12 @@ const AddBook = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
+    try {
+      const response = await axios.post('/api/add-book', { name, author });
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage('Error: Book Already Exists');
+    }
   };
 
   return (
