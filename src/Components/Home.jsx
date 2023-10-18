@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Card from "./Card";
 import axios from "axios";
 import './style.css'
+// import img from '../assets/a.jpg'
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState('Harry Potter'); // Set your initial search term
   const [books, setBooks] = useState([]);
@@ -40,7 +41,7 @@ const Home = () => {
               onKeyPress={searchTerm} />
             {/* <button><i className=" btn fas fa-search"></i></button> */}
           </div>
-          <img src="./images/bg2.png" alt="" />
+          {/* <img src={img} alt="" /> */}
         </div>
       </div>
 

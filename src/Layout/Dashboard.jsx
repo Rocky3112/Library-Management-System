@@ -29,10 +29,11 @@ const Dashboard = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 h-full bg-slate-300">
+          <ul className="menu p-4 w-96 h-full bg-slate-300 text-2xl">
             {
             isAdmin ? (
               <>
+              <h1 className="text-3xl font-semibold text-orange-500 py-4"> Admin Dashboard</h1>
                 <li>
                   <NavLink to="/dashboard/adminhome">
                     <FaHome></FaHome> Admin Home
