@@ -7,7 +7,7 @@ import Home from "../Components/Home";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard";
 import AdminRoute from "./AdminRoute";
-import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
+import AdminHome from "../Pages/Dashboard/AdminPanel/AdminHome";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 
 
