@@ -9,6 +9,7 @@ import Dashboard from "../Layout/Dashboard";
 import AdminRoute from "./AdminRoute";
 import AdminHome from "../Pages/Dashboard/AdminPanel/AdminHome";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
+import AddBook from "../Pages/Dashboard/AdminPanel/AddBook";
 
 
 export const router = createBrowserRouter([
@@ -49,7 +50,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "adminhome",
-        element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
+        element: <AdminRoute><AddBook></AddBook></AdminRoute>
       },
       {
         path: "allusers",
