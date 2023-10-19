@@ -49,7 +49,7 @@ export const router = createBrowserRouter([
         element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
       },
       {
-        path: "adminhome",
+        path: "addbook",
         element: <AdminRoute><AddBook></AddBook></AdminRoute>
       },
       {
