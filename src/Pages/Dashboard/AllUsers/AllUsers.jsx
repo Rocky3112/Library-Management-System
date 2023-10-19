@@ -65,7 +65,7 @@ const AllUsers = () => {
     
 
     return (
-        <div className="w-full">
+        <div className="w-full bg-white">
             <Helmet>
                 <title>LMS | All users</title>
             </Helmet>
