@@ -49,6 +49,11 @@ const Dashboard = () => {
                     <FaUsers></FaUsers> Manage Users
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink to="/dashboard/allBooks">
+                    <FaUsers></FaUsers> Manage Books
+                  </NavLink>
+                </li>
               </>
             ) : (
               <>
@@ -76,9 +81,7 @@ const Dashboard = () => {
                 <FaHome></FaHome> Home
               </NavLink>
             </li>
-            {/* <li>
-              <NavLink to="/"><FaUser></FaUser>All classes</NavLink>
-            </li> */}
+            
            
           </ul>
         </div>
