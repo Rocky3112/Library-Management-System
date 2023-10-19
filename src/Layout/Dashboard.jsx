@@ -7,7 +7,7 @@ import {
   FaMoneyCheckAlt
 } from "react-icons/fa";
 import useAdmin from "../Hooks/useAdmin";
-
+import '../Pages/Dashboard/AdminPanel/Addbooks.css'
 
 
 const Dashboard = () => {
@@ -18,7 +18,7 @@ const Dashboard = () => {
     <div>
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content flex flex-col items-center justify-center">
+        <div className="drawer-content flex flex-col items-center justify-center books">
           <Outlet></Outlet>
           <label
             htmlFor="my-drawer-2"

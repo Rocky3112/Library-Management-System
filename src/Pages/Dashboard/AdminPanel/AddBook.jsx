@@ -1,6 +1,7 @@
 
 import  { useState } from 'react';
 import axios from 'axios';
+// import './Addbooks.css'
 
 const AddBook = () => {
   const [name, setName] = useState('');
@@ -19,8 +20,8 @@ const AddBook = () => {
   };
 
   return (
-    <div className="text-center books">
-      <span className="text-2xl font-semibold">Add Books in Library</span>
+    <div className="text-center ">
+      <span className="text-2xl font-semibold text-white">Add Books in Library</span>
       <form onSubmit={handleFormSubmit}>
         <div className="mt-4">
           <input
@@ -29,7 +30,7 @@ const AddBook = () => {
             placeholder="Enter Book Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-64 p-2 border rounded"
+            className="w-80 py-3 px-4 border rounded"
             required
           />
         </div>
@@ -40,16 +41,16 @@ const AddBook = () => {
             placeholder="Enter Author Name"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            className="w-64 p-2 border rounded"
+            className="w-80 py-3 px-4 border rounded"
             required
           />
         </div>
         <div className="mt-4">
-          <input type="submit" value="ADD BOOK" className="bg-blue-500 text-white p-2 rounded" />
+          <input type="submit" value="ADD BOOK" className="hover:bg-blue-500 text-black bg-white py-3 px-4 rounded" />
         </div>
       </form>
       <div className="mt-4 text-green-600">{message}</div>
-      <a href="adminhome" className="text-blue-500 mt-4">Go Back</a>
+      <a href="adminhome" className="text-white mt-4">Go Back</a>
     </div>
   );
 };
