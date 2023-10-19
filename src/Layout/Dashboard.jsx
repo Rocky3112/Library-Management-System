@@ -79,9 +79,7 @@ const Dashboard = () => {
             <li>
               <NavLink to="/allClasses"><FaUser></FaUser>All classes</NavLink>
             </li>
-            {/* <li>
-              <NavLink to="/order/salad">Order Food</NavLink>
-            </li> */}
+           
           </ul>
         </div>
       </div>
