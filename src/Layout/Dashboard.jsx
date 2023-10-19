@@ -76,9 +76,9 @@ const Dashboard = () => {
                 <FaHome></FaHome> Home
               </NavLink>
             </li>
-            <li>
-              <NavLink to="/allClasses"><FaUser></FaUser>All classes</NavLink>
-            </li>
+            {/* <li>
+              <NavLink to="/"><FaUser></FaUser>All classes</NavLink>
+            </li> */}
            
           </ul>
         </div>

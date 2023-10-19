@@ -8,12 +8,12 @@ const AdminHome = () => {
         <div className="bg-white p-4 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-2" > </h2>
           <p className="text-gray-600 mb-4">Add, edit, or remove books from the library.</p>
-          <a href="/manage-books" className="text-blue-500 hover:underline">Go to Book Management</a>
+          <a href="/dashboard/addBook" className="text-blue-500 hover:underline">Go to Book Management</a>
         </div>
         <div className="bg-white p-4 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-2">Manage Users</h2>
           <p className="text-gray-600 mb-4">Manage user accounts and permissions.</p>
-          <a href="/manage-users" className="text-blue-500 hover:underline">Go to User Management</a>
+          <a href="/dashboard/allusers" className="text-blue-500 hover:underline">Go to User Management</a>
         </div>
         <div className="bg-white p-4 rounded-lg shadow-md">
           <h2 className="text-xl font-semibold mb-2">Reports</h2>
