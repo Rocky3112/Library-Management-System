@@ -66,7 +66,7 @@ const Navbar = () => {
 
             </ul>
           </div>
-          <a className="btn btn-ghost lg:text-3xl text-lg">
+          <a className="btn btn-ghost lg:text-3xl text-xl">
             Library Management System
           </a>
         </div>

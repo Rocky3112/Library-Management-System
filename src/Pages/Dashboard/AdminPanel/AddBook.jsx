@@ -19,7 +19,7 @@ const AddBook = () => {
   };
 
   return (
-    <div className="text-center">
+    <div className="text-center books">
       <span className="text-2xl font-semibold">Add Books in Library</span>
       <form onSubmit={handleFormSubmit}>
         <div className="mt-4">
