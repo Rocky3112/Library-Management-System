@@ -10,6 +10,7 @@ import AdminRoute from "./AdminRoute";
 import AdminHome from "../Pages/Dashboard/AdminPanel/AdminHome";
 import AllUsers from "../Pages/Dashboard/AllUsers/AllUsers";
 import AddBook from "../Pages/Dashboard/AdminPanel/AddBook";
+import UserHome from "../Pages/Dashboard/UserPanel/UserHome";
 
 
 export const router = createBrowserRouter([
@@ -40,10 +41,10 @@ export const router = createBrowserRouter([
     element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
     errorElement: <ErrorPage></ErrorPage>,
     children:[
-      // {
-      //   path: "userhome",
-      //   element: <UserHome></UserHome>
-      // },
+      {
+        path: "userhome",
+        element: <UserHome></UserHome>
+      },
       {
         path: "adminhome",
         element: <AdminRoute><AdminHome></AdminHome></AdminRoute>
