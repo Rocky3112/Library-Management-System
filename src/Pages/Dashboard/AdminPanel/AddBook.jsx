@@ -24,19 +24,20 @@ const AddBook = () => {
   return (
     <div className="text-center ">
       <span className="text-2xl font-semibold text-white">Add Books in Library</span>
-      <form onSubmit={handleSubmit(onSubmit)} className="bg-slate-200 p-10 rounded shadow-xl">
+      <form onSubmit={handleSubmit(onSubmit)} className=" p-10 rounded-lg bg-white shadow-xl">
       <div className="flex items-center justify-between gap-6">
         <div className="grid gap-5">
 
-          <label htmlFor="name">Name:</label>
-          <input
+          <label className=' font-bold text-2xl' htmlFor="name">Book Name:</label>
+          <input className=' px-6 py-4 rounded-lg bg-slate-200'
             type="text"
             id="name"
             {...register("name", { required: true })}
           />
 
-          <label htmlFor="author">Author Name:</label>
+          <label className=' font-bold text-2xl' htmlFor="author">Author Name:</label>
           <input
+          className='px-6 py-4 rounded-lg bg-slate-200'
             type="text"
             id="author"
             {...register("author", { required: true })}
