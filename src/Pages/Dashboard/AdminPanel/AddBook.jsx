@@ -2,6 +2,7 @@
 // import  { useState } from 'react';
 // import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import Swal from 'sweetalert2';
 // import './Addbooks.css'
 
 const AddBook = () => {
@@ -19,6 +20,14 @@ const AddBook = () => {
       },
       body: JSON.stringify(data)
     })
+    .then(res=> res.json())
+    .then(data=>{
+      console.log(data);
+      if(data.insertedId){
+        Swal.fire('Book Added Successfull!')
+      }
+    })
+  
     // e.preventDefault();
 
     // try {
