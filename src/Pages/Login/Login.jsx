@@ -1,120 +1,120 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import Swal from 'sweetalert2';
-import { useContext, useState } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { AuthContext } from '../../Providers/AuthProvider';
-import login from '../../assets/login.png';
-import { FiEye, FiEyeOff } from 'react-icons/fi'; 
-import SocialLogin from '../SocialLogin/SocialLogin';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../../Providers/AuthProvider";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
-    const navigate = useNavigate();
-    const location = useLocation();
+  const { signIn } = useContext(AuthContext);
+  const [show, setShow] = useState(false);
+  // const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
 
-    const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = async (data) => {
+    const email = data.email;
+    const password = data.password;
+    const result = await signIn(email, password);
+    const user = result.user;
+    console.log(user);
+    Swal.fire({
+        title: 'User Login Successful.',
+        showClass: {
+            popup: 'animate__animated animate__fadeInDown',
+        },
+        hideClass: {
+            popup: 'animate__animated animate__fadeOutUp',
+        },
+    });
+    navigate(from, { replace: true });
+};
 
-    const {
-        handleSubmit,
-        control,
-        formState: { errors },
-    }= useForm();
-
-    const [showPassword, setShowPassword] = useState(false);
-
-    const handleLogin = async (data) => {
-        const email = data.email;
-        const password = data.password;
-        const result = await signIn(email, password);
-        const user = result.user;
-        console.log(user);
-        Swal.fire({
-            title: 'User Login Successful.',
-            showClass: {
-                popup: 'animate__animated animate__fadeInDown',
-            },
-            hideClass: {
-                popup: 'animate__animated animate__fadeOutUp',
-            },
-        });
-        navigate(from, { replace: true });
-    };
-
-    return (
-        <>
-            <Helmet>
-                <title>LMS | Login</title>
-            </Helmet>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col md:flex-row-reverse">
-                    <div className="text-center md:w-1/2 lg:text-left">
-                        <h1 className="text-5xl font-bold">Login now!</h1>
-                        <img src={login} alt="" />
-                    </div>
-                    <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
-                        <form onSubmit={handleSubmit(handleLogin)} className="card-body">
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Email</span>
-                                </label>
-                                <Controller
-                                    name="email"
-                                    control={control}
-                                    defaultValue=""
-                                    rules={{ required: 'Email is required' }}
-                                    render={({ field }) => <input {...field} type="email" placeholder="email" className="input input-bordered" />}
-                                />
-                                {errors.email && <span className="text-red-600">{errors.email.message}</span>}
-                            </div>
-                            <div className="form-control">
-                                <label className="label">
-                                    <span className="label-text">Password</span>
-                                </label>
-                                <div className="relative">
-                                    <Controller
-                                        name="password"
-                                        control={control}
-                                        defaultValue=""
-                                        rules={{ required: 'Password is required' }}
-                                        render={({ field }) => <input {...field} type={showPassword ? "text" : "password"} placeholder="password" className="input input-bordered" />}
-                                    />
-                                    <button
-                                        type="button"
-                                        className="absolute top-1/2 right-2 transform -translate-y-1/2 cursor-pointer"
-                                        onClick={() => setShowPassword((prevShow) => !prevShow)}
-                                    >
-                                        {showPassword ? (
-                                            <FiEyeOff className="text-xl" />
-                                        ) : (
-                                            <FiEye className="text-xl" />
-                                        )}
-                                    </button>
-                                </div>
-                                {errors.password && <span className="text-red-600">{errors.password.message}</span>}
-                                <label className="label">
-                                    <a href="#" className="label-text-alt link link-hover">
-                                        Forgot password?
-                                    </a>
-                                </label>
-                            </div>
-                            {/* You can add your LoadCanvasTemplate and handleValidateCaptcha here */}
-                            <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="Login" />
-                            </div>
-                        </form>
-                        <p className="text-center text-blue-800 text-xl pb-2">
-                            <small>
-                                New Here? <Link to="/signup">Create an account</Link>
-                            </small>
-                        </p>
-                        <SocialLogin></SocialLogin>
-                    </div>
-
-                </div>
-            </div>
-        </>
-    );
+  return (
+    <div className="pt-24 bg-gray-100">
+      <h1 className="text-center font-bold text-gray-800 text-lg mb-3">
+        Login
+      </h1>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full md:w-[400px] md:mx-auto p-4 md:p-8 bg-white shadow-xl rounded-md"
+      >
+        <div className="my-3">
+          <label className="font-semibold" htmlFor="email">
+            Email
+          </label>
+          <input
+            className="border-2 border-[#C5C5C5] py-2 px-3 w-full rounded-lg mt-2"
+            type="email"
+            {...register("email", { required: "Email is required" })}
+            id=""
+            placeholder="Enter email"
+          />
+          {errors.email && (
+            <p className="text-sm text-red-500">{errors.email.message}</p>
+          )}
+        </div>
+        <div className="mb-4 relative">
+          <label className="font-semibold" htmlFor="password">
+            Password
+          </label>
+          <input
+            className="border-2 border-[#C5C5C5] py-2 px-3 w-full rounded-lg mt-2"
+            type={show ? "text" : "password"}
+            {...register("password", { required: "Password is required" })}
+            id=""
+            placeholder="Enter Password"
+          />
+          <p
+            className="cursor-pointer absolute top-11 right-3 text-lg"
+            onClick={() => setShow(!show)}
+          >
+            {show ? (
+              <span>
+                <FaEyeSlash></FaEyeSlash>
+              </span>
+            ) : (
+              <span>
+                <FaEye></FaEye>
+              </span>
+            )}
+          </p>
+          {errors.password && (
+            <p className="text-sm text-red-500">{errors.password.message}</p>
+          )}
+          {/* <p className="text-red-500">{error}</p> */}
+        </div>
+        <input
+          className="w-full py-3 bg-[#2cdbde] rounded-[10px] font-semibold text-lg cursor-pointer"
+          type="submit"
+          value="Login"
+        />
+      </form>
+      <p className="text-center mt-2">
+        Do not have an account?{" "}
+        <Link
+          className="text-blue-500 hover:text-blue-700 font-semibold"
+          to="/signup"
+        >
+          Sign Up
+        </Link>
+      </p>
+      <p className="text-center mb-3">
+        Or
+      </p>
+      {/* Google sign in */}
+      <div className="mb-6">
+        <SocialLogin />
+      </div>
+    </div>
+  );
 };
 
 export default Login;

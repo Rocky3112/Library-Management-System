@@ -1,8 +1,9 @@
 
 import { useContext } from "react";
-import useAxios from "./useAxios";
+
 import { AuthContext } from "../Providers/AuthProvider";
 import { useQuery } from "react-query";
+import useAxios from "./useAxios";
 
 
 const useAdmin = () => {

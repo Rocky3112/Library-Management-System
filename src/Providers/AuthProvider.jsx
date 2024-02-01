@@ -26,10 +26,19 @@ const AuthProvider = ({ children }) => {
 
     const googleProvider = new GoogleAuthProvider();
 
-    const createUser = (email, password) => {
+    const createUser = async (email, password) => {
         setLoading(true);
-        return createUserWithEmailAndPassword(auth, email, password)
-    }
+        try {
+          const result = await createUserWithEmailAndPassword(auth, email, password);
+          // Additional logic if needed
+          return result;
+        } catch (error) {
+          console.error("Error creating user:", error.message);
+          throw error; // Re-throw the error to propagate it to the component
+        } finally {
+          setLoading(false);
+        }
+      };
 
     const signIn = (email, password) => {
         setLoading(true);
