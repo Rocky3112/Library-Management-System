@@ -1,19 +1,23 @@
 /* eslint-disable no-unused-vars */
-
-import { useQuery } from "react-query";
 import Swal from "sweetalert2";
 import { FaTrashAlt, FaUserShield } from "react-icons/fa";
 import { Helmet } from "react-helmet";
 import useAxios from "../../../Hooks/useAxios";
+// import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 
 
 const AllUsers = () => {
     const [axiosSecure] = useAxios();
-    const { data: users = [], refetch } = useQuery(['users'], async () => {
-        const res = await axiosSecure.get('/users')
-        return res.data;
-    })
+    const { data: users = [], refetch } = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/users');
+            console.log(res.data);
+            return res.data;
+        }
+    });
 
     const handleMakeAdmin = user =>{
         fetch(`http://localhost:5000/users/admin/${user._id}`, {

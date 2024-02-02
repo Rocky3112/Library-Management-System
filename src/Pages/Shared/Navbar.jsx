@@ -1,16 +1,17 @@
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAdmin from "../../Hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   // console.log(user);
   const [isAdmin] = useAdmin();
+  const navigate = useNavigate();
   const handleLogOut = () => {
+    navigate("/")
     logOut()
-      .then(() => { })
-      .catch((error) => console.log(error));
+      
   };
   return (
     <div>

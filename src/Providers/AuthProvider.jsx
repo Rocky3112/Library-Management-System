@@ -62,29 +62,53 @@ const AuthProvider = ({ children }) => {
         });
     }
 
-    useEffect(() => {
-      const unsubscribe = onAuthStateChanged(auth, currentUser => {
-          setUser(currentUser);
-          console.log('current user', currentUser);
+  //   useEffect(() => {
+  //     const unsubscribe = onAuthStateChanged(auth, currentUser => {
+  //         setUser(currentUser);
+  //         console.log('current user', currentUser);
 
-          // get and set token
-          if(currentUser){
-              axios.post('http://localhost:5000/jwt', {email: currentUser.email})
-              .then(data =>{
-                  // console.log(data.data.token)
-                  localStorage.setItem('access-token', data.data.token)
-                  setLoading(false);
-              })
-          }
-          else{
-              localStorage.removeItem('access-token')
-          }
+  //         // get and set token
+  //         if(currentUser){
+  //             axios.post('http://localhost:5000/jwt', {email: currentUser.email})
+  //             .then(data =>{
+  //                 // console.log(data.data.token)
+  //                 localStorage.setItem('access-token', data.data.token)
+  //                 setLoading(false);
+  //             })
+  //         }
+          
+  //         else{
+  //             localStorage.removeItem('access-token')
+  //         }
 
           
-      });
-      return () => {
-          return unsubscribe();
+  //     });
+  //     return () => {
+  //         return unsubscribe();
+  //     }
+  // }, [])
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, currentUser => {
+      setUser(currentUser)
+      // console.log('currentUser',currentUser);
+      if (currentUser) {
+        axios.post('http://localhost:5000/jwt', { email: currentUser.email })
+          .then(data => {
+            // console.log(data.data.token);
+            localStorage.setItem('access-token', data.data.token)
+          }).catch(error => {
+            console.log(`Error:`, error.message);
+          })
+          setLoading(false)
       }
+      else {
+        localStorage.removeItem('access-token')
+        setLoading(false)
+      }
+    })
+    return () => {
+      return unsubscribe()
+    }
   }, [])
 
   const authInfo = {

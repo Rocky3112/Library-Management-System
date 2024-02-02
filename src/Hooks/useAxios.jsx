@@ -1,41 +1,80 @@
+// /* eslint-disable no-unused-vars */
+// import { useContext, useEffect } from 'react';
+// import axios from 'axios';
+// import { useNavigate } from 'react-router-dom';
+// import { AuthContext } from '../Providers/AuthProvider';
+// // import { AuthContext } from '../Providers/AuthProvider';
+
+
+// const axiosSecure = axios.create({
+//   baseURL: 'http://localhost:5000',
+// });
+
+// const useAxios = () => {
+//   const { logOut,user } = useContext(AuthContext);
+//   console.log(user);
+//   const navigate = useNavigate();
+
+//   useEffect(() => {
+//     axiosSecure.interceptors.request.use((config) => {
+//       const token = localStorage.getItem('access-token');
+//       console.log(token);
+//       if (token) {
+//         config.headers.Authorization = `Bearer ${token}`;
+//       }
+//       return config;
+//     });
+//     axiosSecure.interceptors.response.use(
+//       (response) => response,
+//       async (error) => {
+//         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
+//           await logOut();
+//           navigate('/login');
+//         }
+//         return Promise.reject(error);
+//       }
+//     );
+//   }, [logOut, navigate]);
+
+//   return [axiosSecure];
+// };
+
+// export default useAxios;
 /* eslint-disable no-unused-vars */
 import { useContext, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../Providers/AuthProvider';
-// import { AuthContext } from '../Providers/AuthProvider';
-
 
 const axiosSecure = axios.create({
   baseURL: 'http://localhost:5000',
 });
 
 const useAxios = () => {
-  const { logOut,user } = useContext(AuthContext);
-  console.log(user);
+  const { logOut, user } = useContext(AuthContext);
+  // console.log(user);
   const navigate = useNavigate();
-
 
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {
       const token = localStorage.getItem('access-token');
+      // console.log(token);
       if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
+        config.headers.Authorization = `Bearer ${token}`; // Corrected syntax
       }
       return config;
     });
-
     axiosSecure.interceptors.response.use(
       (response) => response,
       async (error) => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-          await logOut();
-          navigate('/login');
+          // await logOut();
+          // navigate('/login');
         }
         return Promise.reject(error);
       }
     );
-  }, [logOut, navigate]);
+  }, [logOut, navigate, axiosSecure]);
 
   return [axiosSecure];
 };
